@@ -6,6 +6,7 @@ import { MatSelectSearchComponent } from 'src/app/common-components/mat-select-s
 import { ProductData, ProductDetail } from 'src/app/utils/product/product_util';
 import { MediaObserver } from '@angular/flex-layout';
 import { ProductFilterPipe } from 'src/app/pipes/product-filter.pipe';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-compare-product',
@@ -17,25 +18,27 @@ import { ProductFilterPipe } from 'src/app/pipes/product-filter.pipe';
     CommonModule,
     MatSelectSearchComponent,
     CompareProductDetailsComponent,
-    ProductFilterPipe
+    ProductFilterPipe,
   ],
 })
 export class CompareProductComponent {
   products = [] as Array<ProductDetail>;
-  selectedProducts: Array<ProductDetail | null> = [null, null, null];
+  // selectedProducts = [] as Array<ProductDetail>;
   selectedProductIds: Array<string> = [];
   compareProducts: Array<ProductDetail | null> = [null, null, null];
 
-  constructor(
-    public mediaObserver: MediaObserver
-    ) {
-    this.products = [...ProductData];
+  constructor(public mediaObserver: MediaObserver, private router: Router) {
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.compareProducts = this.router.getCurrentNavigation().extras.state['selectedCompareProdcutList'];
+      // this.selectedProducts = this.compareProducts;
+      this.selectedProductIds = this.compareProducts.map((productObj) => productObj.productId);
+      console.log('this.compareProducts', this.compareProducts);
+    } 
+      this.products = [...ProductData];
   }
 
   onSelectItem(event: any, compareNumber: number) {
     this.compareProducts[compareNumber] = event;
     this.selectedProductIds[compareNumber] = event.productId;
   }
-
-  
 }

@@ -15,7 +15,7 @@
           <img
             [ngSrc]="product.imageUrl"
             height="200"
-            width="300"
+            width="200"
             priority
             alt="image not found"
           />
@@ -29,7 +29,11 @@
       <td>{{ product.productName }}</td>
       <td>{{ product.productDescription }}</td>
       <td>
-        <span class="priceText">${{ product.price }}</span>
+        <span class="priceText">{{ product.price | currency }}</span><br/>
+        <button mat-button  style="font-size: 12px;right: 10px;">{{product.averageRating}}<mat-icon class="no-margin-no-padding" style="font-size: 16px;">star</mat-icon></button>
+        <ng-container *ngIf="product?.promotions.length > 0">
+          <p *ngFor="let promotion of product?.promotions; let i = index"><span [ngClass]="promotion.toLowerCase().includes('offer') ? 'offerLabel' : ''">{{promotion}}</span> &nbsp;</p>
+        </ng-container>
         <p class="fewItemLeft" [hidden]="(product.availableStock - product.inCart) >= 5" fxFlex>Only few left</p>
       </td>
       <td>
@@ -65,6 +69,9 @@
             >
               <mat-icon>add</mat-icon> Add to cart
             </button>
+          </div>
+          <div fxLayout="row" fxFlex fxLayoutAlign="start center">
+            <mat-checkbox [checked]="checkForSelect(product)" class="example-margin" (change)="checkUncheckAddToCompare($event, product)">Add to Compare</mat-checkbox>
           </div>
         </ng-template>
       </td>

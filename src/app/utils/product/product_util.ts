@@ -13,6 +13,8 @@ export const ProductData =  [
       'Integrated Graphics',
       '15-inch display',
     ],
+    promotions: ["Free Shipping"],
+    averageRating: 4.5,
   },
   {
     productId: '002',
@@ -28,6 +30,8 @@ export const ProductData =  [
       '4000mAh battery',
       '5G capability',
     ],
+    promotions: ["Free Shipping"],
+    averageRating: 4,
   },
   {
     productId: '003',
@@ -43,6 +47,8 @@ export const ProductData =  [
       '20-hour battery life',
       'Built-in microphone',
     ],
+    promotions: ["Free Shipping", "Bank Offer"],
+    averageRating: 3,
   },
   {
     productId: '004',
@@ -58,6 +64,8 @@ export const ProductData =  [
       'Waterproof',
       'App Store integration',
     ],
+    promotions: ["Free Shipping"],
+    averageRating: 1,
   },
   {
     productId: '005',
@@ -73,6 +81,8 @@ export const ProductData =  [
       '8K resolution support',
       'VR integration',
     ],
+    promotions: ["Free Shipping"],
+    averageRating: 4,
   },
   {
     productId: '006',
@@ -88,6 +98,8 @@ export const ProductData =  [
       '5-axis in-body stabilization',
       'Dual Pixel autofocus',
     ],
+    promotions: ["Free Shipping", "Bank Offer"],
+    averageRating: 3.5,
   },
   {
     productId: '007',
@@ -103,6 +115,8 @@ export const ProductData =  [
       'Rich bass',
       'Portable design',
     ],
+    promotions: ["Free Shipping", "Bank Offer"],
+    averageRating: 4,
   },
   {
     productId: '008',
@@ -118,6 +132,8 @@ export const ProductData =  [
       'Intercom functionality',
       'Compact design',
     ],
+    promotions: ["Free Shipping", "1-year Warranty"],
+    averageRating: 3.5,
   },
   {
     productId: '009',
@@ -133,6 +149,8 @@ export const ProductData =  [
       'Waterproof design',
       '7-day battery life',
     ],
+    promotions: ["Free Shipping", "Bank Offer"],
+    averageRating: 2.5,
   },
   {
     productId: '0010',
@@ -148,6 +166,8 @@ export const ProductData =  [
       'USB-C connector',
       'Face ID',
     ],
+    promotions: ["Free Shipping", "Bank Offer"],
+    averageRating: 1.5,
   },
   {
     productId: '0011',
@@ -163,6 +183,8 @@ export const ProductData =  [
       'Ambidextrous design',
       'RGB lighting',
     ],
+    promotions: ["Free Shipping", "1-year Warranty"],
+    averageRating: 4.5,
   },
   {
     productId: '0012',
@@ -178,6 +200,8 @@ export const ProductData =  [
       'Touch controllers',
       '6DOF positional tracking',
     ],
+    promotions: ["Free Shipping", "Bank Offer"],
+    averageRating: 4.5,
   },
 ] as ProductDetail[];
 
@@ -190,6 +214,8 @@ export interface ProductDetail {
   price: number;
   imageUrl: string;
   productFeatures: Array<string>;
+  promotions: Array<string>;
+  averageRating: number,
   availableStock?: number; // dummy
   inCart?: number; // dummy
 }

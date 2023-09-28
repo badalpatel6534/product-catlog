@@ -1,4 +1,4 @@
-<ng-container *ngIf="(isGridView$ | async); else tableView">
+<ng-container *ngIf="isGridView$ | async; else tableView">
   <div fxLayout="row wrap">
     <div
       fxFlex="16.66%"
@@ -10,13 +10,31 @@
     >
       <app-product-card
         [product]="productObj"
+        [compareProdcutList]="selectedCompareList"
         (cardAction)="cardAction($event)"
+        (addToCompareAction)="addToCompareAction($event)"
       ></app-product-card>
     </div>
   </div>
 </ng-container>
 
 <ng-template #tableView>
-  <app-product-table [products]="productList$ | async" (cardAction)="cardAction($event)">
+  <app-product-table
+    [products]="productList$ | async"
+    (cardAction)="cardAction($event)"
+    [compareProdcutList] ="selectedCompareList"
+    (addToCompareAction)="addToCompareAction($event)"
+  >
   </app-product-table>
 </ng-template>
+
+<button
+  *ngIf="selectedCompareList?.length > 0"
+  class="fab-button"
+  color="warn"
+  mat-raised-button
+  (click)="redirectToProduct()"
+>
+  <mat-icon>compare_arrows</mat-icon>
+  Compare {{selectedCompareList.length}}
+</button>

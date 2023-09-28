@@ -20,7 +20,6 @@ export class ProductService {
   public cartObjWithTotalAmountSubject: BehaviorSubject<{ count: number, totalAmount: number  }> = new BehaviorSubject<{ count: number, totalAmount: number  }>({count: 0, totalAmount: 0});
   cartObjWithTotal$: Observable<{ count: number, totalAmount: number  }> = this.cartObjWithTotalAmountSubject.asObservable();
 
-
   constructor() { }
   
   setToggleHeaderGridTable(isToggle: boolean) {

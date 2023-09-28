@@ -1,12 +1,13 @@
 <mat-card class="mat-elevation-z4" fxFlex fxFlexAlign="stretch">
-  <mat-card-header class="productName">
-    <mat-card-title>{{ product.productName }}</mat-card-title>
+  <mat-card-header class="productName" fxLayout="row" fxLayoutAlign="space-between center" >
+    <mat-card-title fxLayoutAlign="start center" style="font-size: 16px !important;">{{ product.productName }}</mat-card-title>
+    <button mat-button  fxLayoutAlign="center center" style="font-size: 12px;padding: 0px;">{{product.averageRating}}<mat-icon class="no-margin-no-padding" style="font-size: 16px;">star</mat-icon></button>
   </mat-card-header>
 
   <div class="imgDiv">
     <img
       [ngSrc]="product.imageUrl"
-      height="300"
+      height="200"
       width="200"
       priority
       alt="image not found"
@@ -16,7 +17,12 @@
     <div fxLayout="row" fxLayoutAlign="start center">
       <p class="productPrice" fxFlex>{{ product.price | currency }}</p>
       <p class="fewItemLeft" *ngIf="(product.availableStock - product.inCart) <= 5" fxFlex>Only few left</p>
-  </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <ng-container *ngIf="product?.promotions.length > 0">
+        <p *ngFor="let promotion of product?.promotions; let i = index"><span [ngClass]="promotion.toLowerCase().includes('offer') ? 'offerLabel' : ''">{{promotion}}</span> &nbsp;</p>
+      </ng-container>
+    </div>
   
     <p class="productDescription">{{ product.productDescription }}</p>
   </mat-card-content>
@@ -56,5 +62,11 @@
         </button>
       </div>
     </ng-template>
+
   </mat-card-actions>
+  <ng-container>
+    <div fxLayout="row" fxFlex fxLayoutAlign="start center">
+      <mat-checkbox [checked]="checkForSelect()" class="example-margin" (change)="checkUncheckAddToCompare($event)">Add to Compare</mat-checkbox>
+    </div>
+  </ng-container>
 </mat-card>

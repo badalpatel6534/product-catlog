@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {  MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProductCardComponent } from 'src/app/common-components/product-card/product-card.component';
 import { ProductTableComponent } from 'src/app/common-components/product-table/product-table.component';
@@ -16,15 +19,20 @@ import { ProductData, ProductDetail } from 'src/app/utils/product/product_util';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, FlexLayoutModule, ProductCardComponent, ProductTableComponent]
+  imports: [CommonModule, FlexLayoutModule, ProductCardComponent, ProductTableComponent, MatButtonModule, MatIconModule]
 })
 export class ProductListComponent {
   products = [] as ProductDetail[];
   isGridView$: Observable<boolean>;
   cart$: Observable<{ [productId: string]: number }>;
   productList$: Observable<ProductDetail[]>;
+  selectedCompareList: ProductDetail[] = [];
 
-  constructor(private productService: ProductService) {
+
+  constructor(
+    private productService: ProductService,
+    private router: Router
+    ) {
     this.isGridView$ = this.productService.headerGridTableSelection$;
     this.productList$ = this.productService.productList$;
     this.cart$ = this.productService.cartSavedItemSet$;
@@ -33,6 +41,7 @@ export class ProductListComponent {
     const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
     const savedCartWithTotalAmount = JSON.parse(localStorage.getItem('cartWithTotalAmount'));
     const savedGridTableView = JSON.parse(localStorage.getItem('defaultGridView'));
+    const selectedCompareList = JSON.parse(localStorage.getItem('selectedCompareList'));
 
     if (savedProductList && savedProductList.length > 0) {
         this.productService.setproductListSubject(savedProductList);
@@ -55,6 +64,10 @@ export class ProductListComponent {
       this.productService.setToggleHeaderGridTable(true);
     }
 
+    if (selectedCompareList?.length > 0) {
+      this.selectedCompareList = selectedCompareList;
+    }
+
     if (this.productService.productListSubject.getValue().length <= 0) {
       this.setTheProduct();
     }
@@ -75,6 +88,7 @@ export class ProductListComponent {
         product.availableStock = findInvetory.availableStock;
         product.inCart = 0;
       }
+
       return product;
     });
     this.productService.setproductListSubject(products);
@@ -155,5 +169,28 @@ export class ProductListComponent {
       count: totalCount,
       totalAmount: totalAmount
     }));
+  }
+
+  redirectToProduct() {
+    const navigationExtra = {
+      state: {
+        selectedCompareProdcutList: this.selectedCompareList
+      }
+    } as NavigationExtras;
+    this.router.navigateByUrl('compare-product', navigationExtra)    
+  }
+
+  addToCompareAction(event: {checked: boolean;product: ProductDetail}) {
+    console.log('event........', event);
+  
+    if (event.checked) {
+      this.selectedCompareList.push(event.product);
+    } else {
+      const findIndex = this.selectedCompareList.findIndex((productObj) => productObj.productId === event.product.productId);
+      if (findIndex >= -1) {
+        this.selectedCompareList.splice(findIndex, 1);
+      }
+    }
+    localStorage.setItem('selectedCompareList', JSON.stringify(this.selectedCompareList));
   }
 }

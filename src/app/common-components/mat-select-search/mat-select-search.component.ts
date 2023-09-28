@@ -42,6 +42,7 @@ export class MatSelectSearchComponent {
   // Subject that emits when the component has been destroyed.
   private _onDestroy = new Subject<void>();
 
+
   ngOnInit() {
     // load the initial bank list
     this.filteredBanks.next(this.allItems.slice());
