@@ -5,7 +5,7 @@
         
         <app-mat-select-search
           [allItems]="products | productFilter : selectedProductIds : index"
-          [searchKey]="'productName'"
+          [searchKey]="'brandName'"
           [placeHolderLabel]="'Compare With'"
           (onItemSelect)="onSelectItem($event, index)"
         >

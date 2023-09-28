@@ -9,6 +9,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { CommonModule } from '@angular/common';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-header',
@@ -23,6 +24,7 @@ import { CommonModule } from '@angular/common';
     MatBadgeModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatTooltipModule
   ],
 })
 export class HeaderComponent {
@@ -53,7 +55,7 @@ export class HeaderComponent {
   }
 
   redirectToProduct() {
-    this.router.navigateByUrl('/product');
+    this.router.navigateByUrl('/products');
   }
 
   ngOnDestroy(): void {

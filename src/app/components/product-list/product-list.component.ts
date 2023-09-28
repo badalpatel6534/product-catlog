@@ -43,7 +43,7 @@ export class ProductListComponent {
     const savedGridTableView = JSON.parse(localStorage.getItem('defaultGridView'));
     const selectedCompareList = JSON.parse(localStorage.getItem('selectedCompareList'));
 
-    if (savedProductList && savedProductList.length > 0) {
+    if (savedProductList && savedProductList?.length > 0) {
         this.productService.setproductListSubject(savedProductList);
     } else if (this.productService.productListSubject.getValue().length <= 0) {
       // very first time

@@ -57,4 +57,12 @@ export class ProductCardComponent {
     return checked;
   }
 
+  getDisabled(product: ProductDetail) {
+    if (this.compareProdcutList && this.compareProdcutList.length >= 3) {
+      const isProductSelected = this.compareProdcutList.some(selectedProduct => selectedProduct.productId === product.productId);
+      return !isProductSelected;
+    }
+    return false;
+  }
+  
 }

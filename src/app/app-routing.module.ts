@@ -6,11 +6,11 @@ import { CompareProductComponent } from './components/compare-product/compare-pr
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'product',
+    redirectTo: 'products',
     pathMatch: 'full',
   },
   {
-    path: 'product',
+    path: 'products',
     component: ProductListComponent,
   },
   {

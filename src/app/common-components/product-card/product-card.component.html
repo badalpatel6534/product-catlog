@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z4" fxFlex fxFlexAlign="stretch">
   <mat-card-header class="productName" fxLayout="row" fxLayoutAlign="space-between center" >
-    <mat-card-title fxLayoutAlign="start center" style="font-size: 16px !important;">{{ product.productName }}</mat-card-title>
+    <mat-card-title fxLayoutAlign="start center" style="font-size: 16px !important;">{{ product.brandName }}</mat-card-title>
     <button mat-button  fxLayoutAlign="center center" style="font-size: 12px;padding: 0px;">{{product.averageRating}}<mat-icon class="no-margin-no-padding" style="font-size: 16px;">star</mat-icon></button>
   </mat-card-header>
 
@@ -66,7 +66,7 @@
   </mat-card-actions>
   <ng-container>
     <div fxLayout="row" fxFlex fxLayoutAlign="start center">
-      <mat-checkbox [checked]="checkForSelect()" class="example-margin" (change)="checkUncheckAddToCompare($event)">Add to Compare</mat-checkbox>
+      <mat-checkbox [disabled]="getDisabled(product)" [checked]="checkForSelect()" class="example-margin" (change)="checkUncheckAddToCompare($event)">Add to Compare</mat-checkbox>
     </div>
   </ng-container>
 </mat-card>

@@ -4,22 +4,37 @@
       <ng-container *ngIf="currnetURL?.includes('compare'); else showBackArrow">
         <button
           mat-mini-fab
+          matTooltip="Back to Products"
           aria-label="Example icon button with a home icon"
           (click)="redirectToProduct()"
         >
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
+
+        <div>
+          <h1 class="header-title">Compare Products</h1>
+        </div>
       </ng-container>
 
       <ng-template #showBackArrow>
         <button
           mat-mini-fab
+          matTooltip="Compare Products"
           aria-label="Example icon button with a home icon"
           (click)="redirectToCompareProduct()"
         >
           <mat-icon>compare_arrows</mat-icon>
         </button>
+
+        <div>
+          <h1 class="header-title">Products</h1>
+        </div>
+        
       </ng-template>
+
+     
+      
+
     </mat-toolbar-row>
 
     <mat-toolbar-row
@@ -28,7 +43,10 @@
       fxLayoutGap="26px"
     >
       <ng-container *ngIf="!currnetURL?.includes('compare')">
+
+
         <mat-slide-toggle
+          matTooltip="Switch view"
           color="accent"
           [checked]="isToggleEnable$ | async"
           (toggleChange)="gridTableChangeToggle()"
@@ -39,6 +57,7 @@
       <ng-container *ngIf="cartObjWithTotal$ | async as cartObj">
         <mat-icon
           [matBadge]="cartObj.count"
+          matTooltip="Cart"
           matBadgeColor="warn"
           aria-hidden="false"
           >shopping_cart
@@ -47,6 +66,14 @@
           >$&nbsp;{{ cartObj.totalAmount.toFixed(2) }}</span
         >
       </ng-container>
+
+      <div class="example-button-container">
+        <button mat-mini-fab disabled matTooltip="Yet to implement" aria-label="Example icon button with a home icon">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+
+
     </mat-toolbar-row>
   </mat-toolbar>
 </div>

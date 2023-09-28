@@ -22,11 +22,11 @@
         </div>
         <!-- <img
           [src]="product.imageUrl"
-          alt="{{ product.productName }}"
+          alt="{{ product.brandName }}"
           class="table-product-image"
         /> -->
       </td>
-      <td>{{ product.productName }}</td>
+      <td>{{ product.brandName }}</td>
       <td>{{ product.productDescription }}</td>
       <td>
         <span class="priceText">{{ product.price | currency }}</span><br/>
@@ -70,10 +70,11 @@
               <mat-icon>add</mat-icon> Add to cart
             </button>
           </div>
-          <div fxLayout="row" fxFlex fxLayoutAlign="start center">
-            <mat-checkbox [checked]="checkForSelect(product)" class="example-margin" (change)="checkUncheckAddToCompare($event, product)">Add to Compare</mat-checkbox>
-          </div>
         </ng-template>
+
+        <div fxLayout="row" fxFlex fxLayoutAlign="start center" fxLayoutGap="16px" style="padding-top: 16px;">
+          <mat-checkbox  [checked]="checkForSelect(product)" class="example-margin" (change)="checkUncheckAddToCompare($event, product)">Add to Compare</mat-checkbox>
+        </div>
       </td>
     </tr>
   </tbody>
