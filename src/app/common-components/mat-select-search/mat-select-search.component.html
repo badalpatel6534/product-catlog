@@ -1,0 +1,15 @@
+<mat-form-field fxFlex>
+  <mat-select [formControl]="bankCtrl" [placeholder]="placeHolderLabel" #singleSelect (selectionChange)="onSelectionChange()">
+    <mat-option>
+      <ngx-mat-select-search
+        [hideClearSearchButton]="false"
+        [noEntriesFoundLabel]="'No Record Found'"
+        [formControl]="bankFilterCtrl"
+        placeholderLabel="Search"
+      ></ngx-mat-select-search>
+    </mat-option>
+    <mat-option *ngFor="let bank of filteredBanks | async" [value]="bank">
+      {{ bank[searchKey] }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

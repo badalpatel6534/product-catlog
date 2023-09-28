@@ -1,0 +1,60 @@
+<mat-card class="mat-elevation-z4" fxFlex fxFlexAlign="stretch">
+  <mat-card-header class="productName">
+    <mat-card-title>{{ product.productName }}</mat-card-title>
+  </mat-card-header>
+
+  <div class="imgDiv">
+    <img
+      [ngSrc]="product.imageUrl"
+      height="300"
+      width="200"
+      priority
+      alt="image not found"
+    />
+  </div>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <p class="productPrice" fxFlex>{{ product.price | currency }}</p>
+      <p class="fewItemLeft" *ngIf="(product.availableStock - product.inCart) <= 5" fxFlex>Only few left</p>
+  </div>
+  
+    <p class="productDescription">{{ product.productDescription }}</p>
+  </mat-card-content>
+  <mat-card-actions fxFlex fxFlexAlign="center end">
+    <ng-container *ngIf="product.inCart; else showAddToCardUI">
+      <div fxLayout="row" fxFlex fxLayoutAlign="space-around center">
+       
+        <button
+          color="primary"
+          [hidden]="!product.inCart || product.inCart === 0"
+          mat-mini-fab
+          (click)="addOrRemoveFromCart(product.productId, false)"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+        <span [hidden]="product.inCart === 0">{{ product.inCart }}</span>
+
+        <button
+        [disabled]="product.inCart === product.availableStock"
+          color="primary"
+          mat-mini-fab
+          (click)="addOrRemoveFromCart(product.productId, true)"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #showAddToCardUI>
+      <div fxLayout="row" fxFlex fxLayoutAlign="center center">
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="addOrRemoveFromCart(product.productId, true)"
+        >
+          <mat-icon>add_shopping_cart</mat-icon> Add to cart
+        </button>
+      </div>
+    </ng-template>
+  </mat-card-actions>
+</mat-card>

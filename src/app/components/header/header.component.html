@@ -1,0 +1,52 @@
+<div class="header">
+  <mat-toolbar color="primary" class="header-toolbar" fxLayout="row">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="start center">
+      <ng-container *ngIf="currnetURL?.includes('compare'); else showBackArrow">
+        <button
+          mat-mini-fab
+          aria-label="Example icon button with a home icon"
+          (click)="redirectToProduct()"
+        >
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+      </ng-container>
+
+      <ng-template #showBackArrow>
+        <button
+          mat-mini-fab
+          aria-label="Example icon button with a home icon"
+          (click)="redirectToCompareProduct()"
+        >
+          <mat-icon>compare_arrows</mat-icon>
+        </button>
+      </ng-template>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      fxLayoutGap="26px"
+    >
+      <ng-container *ngIf="!currnetURL?.includes('compare')">
+        <mat-slide-toggle
+          color="accent"
+          [checked]="isToggleEnable$ | async"
+          (toggleChange)="gridTableChangeToggle()"
+        >
+        </mat-slide-toggle>
+      </ng-container>
+
+      <ng-container *ngIf="cartObjWithTotal$ | async as cartObj">
+        <mat-icon
+          [matBadge]="cartObj.count"
+          matBadgeColor="warn"
+          aria-hidden="false"
+          >shopping_cart
+        </mat-icon>
+        <span *ngIf="cartObj.totalAmount" matTextPrefix
+          >$&nbsp;{{ cartObj.totalAmount.toFixed(2) }}</span
+        >
+      </ng-container>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

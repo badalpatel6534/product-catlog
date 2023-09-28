@@ -1,0 +1,22 @@
+<ng-container *ngIf="(isGridView$ | async); else tableView">
+  <div fxLayout="row wrap">
+    <div
+      fxFlex="16.66%"
+      fxFlex.lg="20%"
+      fxFlex.md="33%"
+      fxFlex.sm="50%"
+      fxFlex.xs="100%"
+      *ngFor="let productObj of productList$ | async"
+    >
+      <app-product-card
+        [product]="productObj"
+        (cardAction)="cardAction($event)"
+      ></app-product-card>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #tableView>
+  <app-product-table [products]="productList$ | async" (cardAction)="cardAction($event)">
+  </app-product-table>
+</ng-template>

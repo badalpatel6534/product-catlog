@@ -1,0 +1,42 @@
+<table *ngIf="productDetail">
+  <tr>
+    <td>Product Image</td>
+    <td>
+      <div class="imgDiv">
+        <img
+          [ngSrc]="productDetail.imageUrl"
+          height="300"
+          width="200"
+          priority
+          alt="image not found"
+        />
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Product Name</td>
+    <td>{{ productDetail?.productName }}</td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>{{ productDetail?.productDescription }}</td>
+  </tr>
+  <tr>
+    <td>Price</td>
+    <td>
+      <span *ngIf="productDetail.price" matTextPrefix
+        >$&nbsp;{{ productDetail?.price.toFixed(2) }}</span
+      >
+    </td>
+  </tr>
+  <tr>
+    <td>Features</td>
+    <td>
+      <ul>
+        <li *ngFor="let feature of productDetail?.productFeatures">
+          {{ feature }}
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>

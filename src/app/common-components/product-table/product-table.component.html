@@ -1,0 +1,73 @@
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td class="img-td">
+        <div class="imgDiv">
+          <img
+            [ngSrc]="product.imageUrl"
+            height="200"
+            width="200"
+            priority
+            alt="image not found"
+          />
+        </div>
+        <!-- <img
+          [src]="product.imageUrl"
+          alt="{{ product.productName }}"
+          class="table-product-image"
+        /> -->
+      </td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.productDescription }}</td>
+      <td>
+        <span class="priceText">${{ product.price }}</span>
+        <p class="fewItemLeft" [hidden]="(product.availableStock - product.inCart) >= 5" fxFlex>Only few left</p>
+      </td>
+      <td>
+        <ng-container *ngIf="product.inCart; else showAddToCardUI">
+          <div class="addRemoveButtonDiv">
+            <button
+              color="primary"
+              [hidden]="!product.inCart || product.inCart === 0"
+              mat-mini-fab
+              (click)="addOrRemoveFromCart(product.productId, false)"
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span [hidden]="product.inCart === 0">{{ product.inCart }}</span>
+
+            <button
+              [disabled]="product.inCart === product.availableStock"
+              color="primary"
+              mat-mini-fab
+              (click)="addOrRemoveFromCart(product.productId, true)"
+            >
+              <mat-icon>add_circle</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+
+        <ng-template #showAddToCardUI>
+          <div>
+            <button
+              mat-stroked-button
+              color="primary"
+              (click)="addOrRemoveFromCart(product.productId, true)"
+            >
+              <mat-icon>add</mat-icon> Add to cart
+            </button>
+          </div>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,23 @@
+<div fxLayout="column" fxFlexFill>
+  <div fxLayout="row" fxLayout.lt-md="column" fxFlex="1 1 0" fxLayoutAlign="start start" fxLayoutAlign.lt-md="space-evenly stretch">
+    <ng-container *ngFor="let index of [0, 1, 2]; let last=last;">
+      <div fxFlex="33.33" fxFlex.lt-md="100" class="paddingColumnDiv" [ngClass]="(!mediaObserver.isActive('lt-md') && !last) ? 'borderRightRed' : ''">
+        
+        <app-mat-select-search
+          [allItems]="products | productFilter : selectedProductIds : index"
+          [searchKey]="'productName'"
+          [placeHolderLabel]="'Compare With'"
+          (onItemSelect)="onSelectItem($event, index)"
+        >
+        </app-mat-select-search>
+
+        <div *ngIf="compareProducts[index]">
+          <app-compare-product-details
+            [productDetail]="compareProducts[index]"
+          ></app-compare-product-details>
+        </div>
+
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+
+mat-card {
+  margin: 16px;
+  min-height: 566px;
+}
+
+.imgDiv{
+  margin: 0 auto;
+}
+
+.productPrice {
+  font-weight: 700;
+  font-size: 18px;
+  padding-top: 12px;
+}
+.productDescription {
+  min-height: 80px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+.productName {
+  padding-bottom: 16px;
+}
+.fewItemLeft {
+  color: red;
+  font-weight: 800;
+  text-align: end;
+  margin: 0px;
+}
