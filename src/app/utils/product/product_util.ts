@@ -5,7 +5,7 @@ export const ProductData =  [
     productDescription:
       'Dell Inspiron 15-inch Laptop with an Intel i7 processor, 8GB RAM, and 256GB SSD. Perfect for everyday computing and multimedia tasks.',
     price: 1000.0,
-    imageUrl: 'https://picsum.photos/id/237/200/300',
+    imageUrl: '/assets/images/dell_image.jpeg',
     productFeatures: [
       'Intel i7 processor',
       '8GB RAM',
@@ -20,7 +20,7 @@ export const ProductData =  [
     productDescription:
       'Samsung Galaxy S21 with a 6.5-inch AMOLED display, 64GB storage, and a triple-camera setup. Experience mobile computing at its finest.',
     price: 500.0,
-    imageUrl: 'https://picsum.photos/id/238/200/300',
+    imageUrl: '/assets/images/smartphone.jpeg',
     productFeatures: [
       '6.5-inch AMOLED display',
       '64GB storage',
@@ -35,7 +35,7 @@ export const ProductData =  [
     productDescription:
       'Bose QuietComfort 35 wireless headphones with noise-cancelling technology. Enjoy music in its purest form without distractions.',
     price: 150.0,
-    imageUrl: 'https://picsum.photos/id/239/200/300',
+    imageUrl: 'assets/images/headphone.jpeg',
     productFeatures: [
       'Wireless',
       'Noise-cancelling technology',
@@ -50,7 +50,7 @@ export const ProductData =  [
     productDescription:
       'Apple Watch Series 6 in Space Gray. Monitor your health, track workouts, and stay connected on the go.',
     price: 350.0,
-    imageUrl: 'https://picsum.photos/id/240/200/300',
+    imageUrl: 'assets/images/smartwatch_apple.jpeg',
     productFeatures: [
       'Heart rate monitor',
       'Sleep tracking',
@@ -65,7 +65,7 @@ export const ProductData =  [
     productDescription:
       'Sony PlayStation 5 with ultra-high-speed SSD and ray tracing. Dive into a new generation of gaming.',
     price: 499.0,
-    imageUrl: 'https://picsum.photos/id/241/200/300',
+    imageUrl: 'assets/images/gaming_console.jpeg',
     productFeatures: [
       'Ultra-high-speed SSD',
       'Ray tracing',
@@ -80,7 +80,7 @@ export const ProductData =  [
     productDescription:
       'Canon EOS R5 Mirrorless Digital Camera with a 45MP full-frame sensor. Capture moments in stunning detail.',
     price: 3899.0,
-    imageUrl: 'https://picsum.photos/id/242/200/300',
+    imageUrl: 'assets/images/camera.jpeg',
     productFeatures: [
       '45MP full-frame sensor',
       'Mirrorless design',
@@ -95,7 +95,7 @@ export const ProductData =  [
     productDescription:
       'JBL Flip 5 portable bluetooth speaker. Rich sound, waterproof design, and 12 hours of playtime.',
     price: 120.0,
-    imageUrl: 'https://picsum.photos/id/243/200/300',
+    imageUrl: 'assets/images/jbl_bluetooth_speaker.jpeg',
     productFeatures: [
       'Bluetooth 5.0',
       'Waterproof design',
@@ -110,7 +110,7 @@ export const ProductData =  [
     productDescription:
       'Amazon Echo Dot (4th Gen). Control smart devices, play music, and get answers with Alexa.',
     price: 49.99,
-    imageUrl: 'https://picsum.photos/id/244/200/300',
+    imageUrl: 'assets/images/amazon_echo.jpeg',
     productFeatures: [
       'Voice assistant - Alexa',
       'Music streaming',
@@ -125,7 +125,7 @@ export const ProductData =  [
     productDescription:
       'Fitbit Charge 4 with heart rate monitor, sleep tracking, and GPS. Push your fitness goals to the next level.',
     price: 129.95,
-    imageUrl: 'https://picsum.photos/id/293/200/300',
+    imageUrl: 'assets/images/fitbit_belt.jpeg',
     productFeatures: [
       'Heart rate monitor',
       'Sleep tracking',
@@ -140,7 +140,7 @@ export const ProductData =  [
     productDescription:
       'Apple iPad Pro 12.9-inch with A12Z Bionic chip, dual-camera system, and stunning Liquid Retina display.',
     price: 999.0,
-    imageUrl: 'https://picsum.photos/id/290/200/300',
+    imageUrl: 'assets/images/apple_ipad.jpeg',
     productFeatures: [
       'A12Z Bionic chip',
       'Dual-camera system',
@@ -155,7 +155,7 @@ export const ProductData =  [
     productDescription:
       'Logitech G Pro Wireless Gaming Mouse with Hero 25K sensor for ultimate speed and precision.',
     price: 129.99,
-    imageUrl: 'https://picsum.photos/id/291/200/300',
+    imageUrl: 'assets/images/gaming_mouse.jpeg',
     productFeatures: [
       'Wireless',
       'Hero 25K sensor',
@@ -170,7 +170,7 @@ export const ProductData =  [
     productDescription:
       'Oculus Rift S PC-powered VR headset. Step into virtual reality with improved optics and ergonomic design.',
     price: 399.0,
-    imageUrl: 'https://picsum.photos/id/248/200/300',
+    imageUrl: 'assets/images/vr_box.jpeg',
     productFeatures: [
       'PC-powered VR',
       'Improved optics',
