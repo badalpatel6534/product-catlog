@@ -6,6 +6,9 @@ mat-card {
 }
 
 .imgDiv{
+  img {
+    object-fit: contain;  
+  }
   margin: 0 auto;
 }
 

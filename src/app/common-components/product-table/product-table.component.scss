@@ -68,6 +68,9 @@ td:nth-child(5) {
 }
 
 .imgDiv {
+  img {
+    object-fit: contain;  
+  }
   margin: 0 auto;
 }
 
